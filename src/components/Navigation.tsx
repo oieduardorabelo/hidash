@@ -17,8 +17,8 @@ export const Navigation = () => {
         </Link>
       </h1>
       <div className="flex overflow-hidden rounded-lg bg-white">
-        <Link href="/">
-          <a className={`py-2 px-3 ${activeLink("/")}`}>Customers</a>
+        <Link href="/customer">
+          <a className={`py-2 px-3 ${activeLink("/customer")}`}>Customer List</a>
         </Link>
         <Link href="/customer/new">
           <a className={`py-2 px-3 ${activeLink("/customer/new")}`}>Add Customer</a>

@@ -21,7 +21,7 @@ const CustomerEditPage: NextPageWithLayout = () => {
   const deleteDustomerQuery = trpc.useMutation("customer.delete", {
     async onSuccess() {
       await utils.invalidateQueries(["customer.all"]);
-      await router.push(`/`);
+      await router.push(`/customer`);
     },
   });
   const updateCustomerQuery = trpc.useMutation("customer.update", {

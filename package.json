@@ -1,0 +1,83 @@
+{
+  "name": "hidash",
+  "description": "CRUD Example using tRPC, Prisma ORM, React Query, Next.js and Tailwind CSS",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:1-migrate": "prisma migrate deploy",
+    "build:2-build": "next build",
+    "build": "run-s build:*",
+    "db-up": "docker-compose up -d",
+    "db-seed": "prisma db seed",
+    "db-migrate-dev": "yarn prisma migrate dev",
+    "db-nuke": "docker-compose down --volumes --remove-orphans",
+    "dev": "next dev",
+    "dx": "run-s db-up db-migrate-dev db-seed dev",
+    "start": "next start",
+    "lint": "eslint src",
+    "lint-fix": "yarn lint --fix",
+    "test-dev": "start-server-and-test dev 3000 test",
+    "test-start": "start-server-and-test start 3000 test",
+    "test": "run-s test:*",
+    "test:unit": "jest",
+    "test:e2e": "playwright test",
+    "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\"",
+    "prisma-g": "prisma generate",
+    "postinstall": "prisma generate"
+  },
+  "prisma": {
+    "seed": "yarn ts-node prisma/seed.ts"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "trailingComma": "all",
+    "singleQuote": false
+  },
+  "dependencies": {
+    "@prisma/client": "4.0.0",
+    "@trpc/client": "9.25.3",
+    "@trpc/next": "9.25.3",
+    "@trpc/react": "9.25.3",
+    "@trpc/server": "9.25.3",
+    "clsx": "1.2.0",
+    "just-debounce-it": "3.0.1",
+    "next": "12.2.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-query": "3.39.1",
+    "start-server-and-test": "1.14.0",
+    "superjson": "1.9.1",
+    "zod": "3.17.3"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "7.3.0",
+    "@playwright/test": "1.23.1",
+    "@types/jest": "28.1.4",
+    "@types/node": "18.0.1",
+    "@types/react": "18.0.14",
+    "@typescript-eslint/eslint-plugin": "5.30.4",
+    "@typescript-eslint/parser": "5.30.4",
+    "autoprefixer": "10.4.7",
+    "eslint": "8.19.0",
+    "eslint-config-next": "12.2.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-react": "7.30.1",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "jest": "28.1.2",
+    "jest-environment-jsdom": "28.1.2",
+    "npm-run-all": "4.1.5",
+    "playwright": "1.23.1",
+    "postcss": "8.4.14",
+    "prettier": "2.7.1",
+    "prettier-plugin-tailwindcss": "0.1.11",
+    "prisma": "4.0.0",
+    "tailwindcss": "3.1.4",
+    "ts-jest": "28.0.5",
+    "ts-node": "10.8.2",
+    "typescript": "4.7.4"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  }
+}
