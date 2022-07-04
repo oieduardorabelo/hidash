@@ -29,7 +29,7 @@ test("add a customer", async ({ page, browser }) => {
     javaScriptEnabled: false,
   });
   const ssrPage = await ssrContext.newPage();
-  await ssrPage.goto("/");
+  await ssrPage.goto("/customer");
 
   expect(await ssrPage.content()).toContain(nonce);
 });
@@ -49,6 +49,6 @@ test("server-side rendering test", async ({ page, browser }) => {
     javaScriptEnabled: false,
   });
   const ssrPage = await ssrContext.newPage();
-  await ssrPage.goto("/");
+  await ssrPage.goto("/customer");
   expect(await ssrPage.content()).toContain(nonce);
 });
