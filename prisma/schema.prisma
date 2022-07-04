@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Customer {
+  id    String @id @unique @default(uuid())
+  status CustomerStatus @default(ACTIVE)
+  name  String
+
+  // To return `Date`s intact through the API we need to add data transformers
+  // https://trpc.io/docs/data-transformers
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  sales SalesRecord[]
+}
+enum CustomerStatus {
+  ACTIVE
+  NON_ACTIVE
+  LEAD
+}
+
+model SalesRecord {
+  id    String @id @unique @default(uuid())
+  status SalesRecordStatus @default(NEW)
+  name  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  customerId String
+}
+enum SalesRecordStatus {
+  NEW
+  CLOSED_WON
+  CLOSED_LOST
+}
