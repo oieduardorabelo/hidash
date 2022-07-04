@@ -1,6 +1,6 @@
 {
   "name": "hidash",
-  "description": "CRUD Example using tRPC, Prisma ORM, React Query, Next.js and Tailwind CSS",
+  "description": "CRUD example using tRPC, Prisma ORM, React Query, Next.js and Tailwind CSS",
   "version": "1.0.0",
   "private": true,
   "scripts": {
